@@ -1,10 +1,12 @@
 import { create } from 'zustand'
 import { persist, createJSONStorage } from 'zustand/middleware'
 import axios, { AxiosInstance } from 'axios'
+// import AsyncStorage from '@react-native-async-storage/async-storage'
 
 interface ClientStore {
   client: AxiosInstance | null
   server: string | null
+  user: string | null
   token: string | null
   setClient: (data: {
     server: string
@@ -12,6 +14,7 @@ interface ClientStore {
     deviceName: string
     deviceID: string
     version: string
+    user: string
     token: string
   }) => void
   signout: () => void
@@ -23,6 +26,7 @@ const useClient = create<ClientStore>()(
     (set) => ({
       client: null,
       server: null,
+      user: null,
       token: null,
       setClient: (data) => {
         const auth =
@@ -41,10 +45,16 @@ const useClient = create<ClientStore>()(
           baseURL: data.server,
           headers: { Authorization: auth },
         })
-        set(() => ({ client: client, server: data.server, token: data.token }))
+        set(() => ({
+          client: client,
+          server: data.server,
+          user: data.user,
+          token: data.token,
+        }))
       },
-      signout: () => set(() => ({ client: null, token: null })),
-      clear: () => set(() => ({ client: null, server: null, token: null })),
+      signout: () => set(() => ({ client: null, user: null, token: null })),
+      clear: () =>
+        set(() => ({ client: null, server: null, user: null, token: null })),
     }),
     {
       name: 'client',
