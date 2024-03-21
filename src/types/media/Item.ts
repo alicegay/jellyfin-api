@@ -117,8 +117,19 @@ type Item = {
   PartCount: number
   MediaSourceCount: number
   ImageTags: {
-    property1: string
-    property2: string
+    Primary: string
+    Art: string
+    Backdrop: string
+    Banner: string
+    Logo: string
+    Thumb: string
+    Disc: string
+    Box: string
+    Screenshot: string
+    Menu: string
+    Chapter: string
+    BoxRear: string
+    Profile: string
   }
   BackdropImageTags: string[]
   ScreenshotImageTags: string[]
@@ -127,58 +138,19 @@ type Item = {
   ParentArtImageTag: string
   SeriesThumbImageTag: string
   ImageBlurHashes: {
-    Primary: {
-      property1: string
-      property2: string
-    }
-    Art: {
-      property1: string
-      property2: string
-    }
-    Backdrop: {
-      property1: string
-      property2: string
-    }
-    Banner: {
-      property1: string
-      property2: string
-    }
-    Logo: {
-      property1: string
-      property2: string
-    }
-    Thumb: {
-      property1: string
-      property2: string
-    }
-    Disc: {
-      property1: string
-      property2: string
-    }
-    Box: {
-      property1: string
-      property2: string
-    }
-    Screenshot: {
-      property1: string
-      property2: string
-    }
-    Menu: {
-      property1: string
-      property2: string
-    }
-    Chapter: {
-      property1: string
-      property2: string
-    }
-    BoxRear: {
-      property1: string
-      property2: string
-    }
-    Profile: {
-      property1: string
-      property2: string
-    }
+    Primary: { [id: string]: string }
+    Art: { [id: string]: string }
+    Backdrop: { [id: string]: string }
+    Banner: { [id: string]: string }
+    Logo: { [id: string]: string }
+    Thumb: { [id: string]: string }
+    Disc: { [id: string]: string }
+    Box: { [id: string]: string }
+    Screenshot: { [id: string]: string }
+    Menu: { [id: string]: string }
+    Chapter: { [id: string]: string }
+    BoxRear: { [id: string]: string }
+    Profile: { [id: string]: string }
   }
   SeriesStudio: string
   ParentThumbItemId: string

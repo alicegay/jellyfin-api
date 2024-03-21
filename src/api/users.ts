@@ -79,12 +79,12 @@ export const Views = () => {
   })
 }
 
-export const Items = (config?: {}) => {
+export const Items = (params?: {}) => {
   return new Promise<ItemsList>((resolve, reject) => {
     useClient
       .getState()
       .client.get<ItemsList>('/Users/' + useClient.getState().user + '/Items', {
-        data: config,
+        params: params,
       })
       .then((res) => resolve(res.data))
       .catch((error: AxiosError) => reject(error))
