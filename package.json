@@ -1,0 +1,23 @@
+{
+  "name": "jellyfin-api",
+  "version": "1.0.0",
+  "description": "Jellyfin API",
+  "type": "module",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "test": "vitest run"
+  },
+  "author": "Alice Hanaki",
+  "license": "MIT",
+  "peerDependencies": {
+    "axios": "^1.6.2",
+    "zustand": "^4.5.2"
+  },
+  "devDependencies": {
+    "@react-native-async-storage/async-storage": "^1.22.3",
+    "typescript": "^5.3.3",
+    "vitest": "^1.4.0"
+  }
+}
