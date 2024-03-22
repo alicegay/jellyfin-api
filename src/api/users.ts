@@ -2,6 +2,7 @@ import axios, { AxiosError } from 'axios'
 import useClient from '../hooks/useClient'
 import Authentication from '../types/users/Authentication'
 import ItemsList from '../types/media/ItemsList'
+import ItemsQuery from '../types/users/ItemsQuery'
 
 export const AuthenticateByName = (
   server: string,
@@ -79,12 +80,36 @@ export const Views = () => {
   })
 }
 
-export const Items = (params?: {}) => {
+export const Items = (params?: ItemsQuery) => {
   return new Promise<ItemsList>((resolve, reject) => {
     useClient
       .getState()
       .client.get<ItemsList>('/Users/' + useClient.getState().user + '/Items', {
         params: params,
+      })
+      .then((res) => resolve(res.data))
+      .catch((error: AxiosError) => reject(error))
+  })
+}
+
+export const Artists = (params?: ItemsQuery) => {
+  return new Promise<ItemsList>((resolve, reject) => {
+    useClient
+      .getState()
+      .client.get<ItemsList>('/Artists', {
+        params: {...params, UserId: useClient.getState().user},
+      })
+      .then((res) => resolve(res.data))
+      .catch((error: AxiosError) => reject(error))
+  })
+}
+
+export const AlbumArtists = (params?: ItemsQuery) => {
+  return new Promise<ItemsList>((resolve, reject) => {
+    useClient
+      .getState()
+      .client.get<ItemsList>('/Artists/AlbumArtists', {
+        params: {...params, UserId: useClient.getState().user},
       })
       .then((res) => resolve(res.data))
       .catch((error: AxiosError) => reject(error))
