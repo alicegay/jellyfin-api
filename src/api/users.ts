@@ -3,6 +3,7 @@ import useClient from '../hooks/useClient'
 import Authentication from '../types/users/Authentication'
 import ItemsList from '../types/media/ItemsList'
 import ItemsQuery from '../types/users/ItemsQuery'
+import Item from '../types/media/Item'
 
 export const AuthenticateByName = (
   server: string,
@@ -111,6 +112,16 @@ export const AlbumArtists = (params?: ItemsQuery) => {
       .client.get<ItemsList>('/Artists/AlbumArtists', {
         params: {...params, UserId: useClient.getState().user},
       })
+      .then((res) => resolve(res.data))
+      .catch((error: AxiosError) => reject(error))
+  })
+}
+
+export const SingleItem = (itemID: string) => {
+  return new Promise<Item>((resolve, reject) => {
+    useClient
+      .getState()
+      .client.get<Item>('/Users/' + useClient.getState().user + '/Items/' + itemID)
       .then((res) => resolve(res.data))
       .catch((error: AxiosError) => reject(error))
   })

@@ -1,5 +1,5 @@
 type ItemsQuery = {
-  ParentId: string,
+  ParentId?: string,
   SortBy?: string
   SortOrder?: 'Ascending' | 'Descending'
   IncludeItemTypes?: string

@@ -91,7 +91,7 @@ type Item = {
   Tags: string[]
   PrimaryImageAspectRatio: number
   Artists: string[]
-  ArtistItems: any
+  ArtistItems: { Name: string; Id: string }[]
   Album: string
   CollectionType?:
     | 'playlists'
@@ -105,12 +105,7 @@ type Item = {
   AlbumPrimaryImageTag: string
   SeriesPrimaryImageTag: string
   AlbumArtist: string
-  AlbumArtists: [
-    {
-      Name: string
-      Id: string
-    },
-  ]
+  AlbumArtists: { Name: string; Id: string }[]
   SeasonName: string
   MediaStreams: MediaStream[]
   VideoType: string
