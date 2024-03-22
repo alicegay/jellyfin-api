@@ -117,6 +117,18 @@ export const AlbumArtists = (params?: ItemsQuery) => {
   })
 }
 
+export const Playlists = (itemID: string, params?: ItemsQuery) => {
+  return new Promise<ItemsList>((resolve, reject) => {
+    useClient
+      .getState()
+      .client.get<ItemsList>('/Playlists/' + itemID + '/Items', {
+        params: {...params, UserId: useClient.getState().user},
+      })
+      .then((res) => resolve(res.data))
+      .catch((error: AxiosError) => reject(error))
+  })
+}
+
 export const SingleItem = (itemID: string) => {
   return new Promise<Item>((resolve, reject) => {
     useClient
