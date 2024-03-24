@@ -45,7 +45,12 @@ const useClient = create<ClientStore>()(
           baseURL: data.server,
           headers: { Authorization: auth },
         })
-        set(() => ({ client: client, server: data.server, token: data.token }))
+        set(() => ({
+          client: client,
+          server: data.server,
+          user: data.user,
+          token: data.token,
+        }))
       },
       signout: () => set(() => ({ client: null, user: null, token: null })),
       clear: () =>
