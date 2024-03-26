@@ -12,10 +12,12 @@
   "author": "Alice Hanaki",
   "license": "MIT",
   "devDependencies": {
+    "@react-native-async-storage/async-storage": "^1.22.3",
     "@rollup/plugin-typescript": "^11.1.6",
     "rollup": "^4.13.0",
     "tslib": "^2.6.2",
-    "typescript": "^5.3.3"
+    "typescript": "^5.3.3",
+    "zustand": "^4.5.2"
   },
   "peerDependencies": {
     "@react-native-async-storage/async-storage": "^1.22.3",

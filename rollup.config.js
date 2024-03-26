@@ -10,7 +10,6 @@ export default {
 		preserveModules: true,
 		preserveModulesRoot: 'src'
 	},
-	treeshake: false,
 	external: [
     '@react-native-async-storage/async-storage',
     'axios',
