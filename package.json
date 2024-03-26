@@ -7,7 +7,7 @@
   "types": "lib/index.d.ts",
   "scripts": {
     "build": "rollup -c",
-    "install": "npm i && npm run build"
+    "install": "npm install . && npm run build"
   },
   "author": "Alice Hanaki",
   "license": "MIT",
