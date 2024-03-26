@@ -6,7 +6,8 @@
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "scripts": {
-    "build": "rollup -c"
+    "build": "rollup -c",
+    "prepare": "rollup -c"
   },
   "author": "Alice Hanaki",
   "license": "MIT",
