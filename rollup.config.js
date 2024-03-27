@@ -11,11 +11,7 @@ export default {
 		preserveModulesRoot: 'src'
 	},
 	external: [
-    '@react-native-async-storage/async-storage',
-    'axios',
-    'react',
-    'zustand',
-    'zustand/middleware'
+    'axios'
 	],
-	plugins: [ typescript({include: '{,**/}*.(ts|native.ts)'}) ]
+	plugins: [ typescript() ]
 };

@@ -1,5 +1,5 @@
 import axios, { AxiosError } from 'axios'
-import useClient from '../hooks/useClient'
+import Client from '../types/Client'
 import Authentication from '../types/users/Authentication'
 import ItemsList from '../types/media/ItemsList'
 import ItemsQuery from '../types/users/ItemsQuery'
@@ -38,54 +38,22 @@ export const AuthenticateByName = (
         },
       )
       .then((response) => {
-        useClient.getState().setClient({
-          server: server,
-          clientName: clientName,
-          deviceName: deviceName,
-          deviceID: deviceID,
-          version: version,
-          user: response.data.User.Id,
-          token: response.data.AccessToken,
-        })
         resolve(response.data)
       })
   })
 }
 
-export const _ResetClient = (
-  clientName: string,
-  deviceName: string,
-  deviceID: string,
-  version: string,
-) => {
-  if (!useClient.getState().client && useClient.getState().token) {
-    useClient.getState().setClient({
-      server: useClient.getState().server,
-      clientName: clientName,
-      deviceName: deviceName,
-      deviceID: deviceID,
-      version: version,
-      user: useClient.getState().user,
-      token: useClient.getState().token,
-    })
-  }
-}
-
-export const Views = () => {
+export const Views = (client: Client) => {
   return new Promise<ItemsList>((resolve, reject) => {
-    useClient
-      .getState()
-      .client.get<ItemsList>('/Users/' + useClient.getState().user + '/Views')
+    client.client.get<ItemsList>('/Users/' + client.user + '/Views')
       .then((res) => resolve(res.data))
       .catch((error: AxiosError) => reject(error))
   })
 }
 
-export const Items = (params?: ItemsQuery) => {
+export const Items = (client: Client, params?: ItemsQuery) => {
   return new Promise<ItemsList>((resolve, reject) => {
-    useClient
-      .getState()
-      .client.get<ItemsList>('/Users/' + useClient.getState().user + '/Items', {
+    client.client.get<ItemsList>('/Users/' + client.user + '/Items', {
         params: params,
       })
       .then((res) => resolve(res.data))
@@ -93,47 +61,39 @@ export const Items = (params?: ItemsQuery) => {
   })
 }
 
-export const Artists = (params?: ItemsQuery) => {
+export const Artists = (client: Client, params?: ItemsQuery) => {
   return new Promise<ItemsList>((resolve, reject) => {
-    useClient
-      .getState()
-      .client.get<ItemsList>('/Artists', {
-        params: {...params, UserId: useClient.getState().user},
+    client.client.get<ItemsList>('/Artists', {
+        params: {...params, UserId: client.user},
       })
       .then((res) => resolve(res.data))
       .catch((error: AxiosError) => reject(error))
   })
 }
 
-export const AlbumArtists = (params?: ItemsQuery) => {
+export const AlbumArtists = (client: Client, params?: ItemsQuery) => {
   return new Promise<ItemsList>((resolve, reject) => {
-    useClient
-      .getState()
-      .client.get<ItemsList>('/Artists/AlbumArtists', {
-        params: {...params, UserId: useClient.getState().user},
+    client.client.get<ItemsList>('/Artists/AlbumArtists', {
+        params: {...params, UserId: client.user},
       })
       .then((res) => resolve(res.data))
       .catch((error: AxiosError) => reject(error))
   })
 }
 
-export const Playlists = (itemID: string, params?: ItemsQuery) => {
+export const Playlists = (client: Client, itemID: string, params?: ItemsQuery) => {
   return new Promise<ItemsList>((resolve, reject) => {
-    useClient
-      .getState()
-      .client.get<ItemsList>('/Playlists/' + itemID + '/Items', {
-        params: {...params, UserId: useClient.getState().user},
+    client.client.get<ItemsList>('/Playlists/' + itemID + '/Items', {
+        params: {...params, UserId: client.user},
       })
       .then((res) => resolve(res.data))
       .catch((error: AxiosError) => reject(error))
   })
 }
 
-export const SingleItem = (itemID: string) => {
+export const SingleItem = (client: Client, itemID: string) => {
   return new Promise<Item>((resolve, reject) => {
-    useClient
-      .getState()
-      .client.get<Item>('/Users/' + useClient.getState().user + '/Items/' + itemID)
+    client.client.get<Item>('/Users/' + client.user + '/Items/' + itemID)
       .then((res) => resolve(res.data))
       .catch((error: AxiosError) => reject(error))
   })

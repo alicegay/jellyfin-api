@@ -1,6 +1,5 @@
 import * as system from './api/system'
 import * as users from './api/users'
-import useClient from './hooks/useClient'
-import useClientNative from './hooks/useClient.native'
+import Client from './types/Client'
 
-export { system, users, useClient, useClientNative }
+export { system, users, Client }

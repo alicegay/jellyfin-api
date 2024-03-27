@@ -1,13 +1,11 @@
 import axios, { AxiosError } from 'axios'
-import useClient from '../hooks/useClient'
 
+import Client from '../types/Client'
 import InfoPublic from '../types/system/InfoPublic'
 
-export const info = () => {
+export const info = (client: Client) => {
   return new Promise<InfoPublic | AxiosError>((resolve) => {
-    useClient
-      .getState()
-      .client.get('/System/Info')
+    client.client.get('/System/Info')
       .then((res) => resolve(res.data))
       .catch((error: AxiosError) => resolve(error))
   })
