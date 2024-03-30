@@ -3,6 +3,15 @@ import * as playlists from './api/playlists'
 import * as shows from './api/shows'
 import * as system from './api/system'
 import * as users from './api/users'
-import Client from './types/Client'
+import type Client from './types/Client'
+import type * as Types from './types'
 
-export { artists, playlists, shows, system, users, Client }
+export {
+  artists,
+  playlists,
+  shows,
+  system,
+  users,
+  Client,
+  Types
+}
