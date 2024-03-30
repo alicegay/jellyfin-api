@@ -4,7 +4,6 @@ import * as shows from './api/shows'
 import * as system from './api/system'
 import * as users from './api/users'
 import type Client from './types/Client'
-import type * as Types from './types'
 
 export {
   artists,
@@ -12,6 +11,5 @@ export {
   shows,
   system,
   users,
-  Client,
-  Types
+  Client
 }
