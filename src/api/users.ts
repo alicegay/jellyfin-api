@@ -24,7 +24,7 @@ export const authenticateByName = (
     '", Version="' +
     version +
     '"'
-  return new Promise<Authentication | AxiosError>((resolve, reject) => {
+  return new Promise<Authentication>((resolve, reject) => {
     axios
       .post<Authentication>(
         '/Users/AuthenticateByName',
