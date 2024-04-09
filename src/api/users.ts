@@ -77,3 +77,13 @@ export const singleItem = (client: Client, itemID: string) => {
       .catch((error: AxiosError) => reject(error))
   })
 }
+
+export const SpecialFeatures = (client: Client, itemID: string, params?: ItemsQuery) => {
+  return new Promise<Item[]>((resolve, reject) => {
+    client.client.get<Item[]>('/Users/' + client.user + '/Items/' + itemID + '/SpecialFeatures', {
+        params: params,
+      })
+      .then((res) => resolve(res.data))
+      .catch((error: AxiosError) => reject(error))
+  })
+}
