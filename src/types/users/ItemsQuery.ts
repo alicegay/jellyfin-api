@@ -11,6 +11,8 @@ type ItemsQuery = {
   StartIndex?: number
   Limit?: number
   IsFavorite?: boolean
+  Season?: number
+  SeasonId?: string
 }
 
 export default ItemsQuery
