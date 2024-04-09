@@ -78,7 +78,7 @@ export const singleItem = (client: Client, itemID: string) => {
   })
 }
 
-export const SpecialFeatures = (client: Client, itemID: string, params?: ItemsQuery) => {
+export const specialFeatures = (client: Client, itemID: string, params?: ItemsQuery) => {
   return new Promise<Item[]>((resolve, reject) => {
     client.client.get<Item[]>('/Users/' + client.user + '/Items/' + itemID + '/SpecialFeatures', {
         params: params,
