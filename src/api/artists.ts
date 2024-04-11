@@ -8,8 +8,10 @@ export const artists = (client: Client, params?: ItemsQuery) => {
     client.client.get<ItemsList>('/Artists', {
         params: {...params, UserId: client.user},
       })
-      .then((res) => resolve(res.data))
-      .catch((error: AxiosError) => reject(error))
+      .then(
+        (res) => resolve(res.data),
+        (error: AxiosError) => reject(error),
+      )
   })
 }
 
@@ -18,7 +20,9 @@ export const albumArtists = (client: Client, params?: ItemsQuery) => {
     client.client.get<ItemsList>('/Artists/AlbumArtists', {
         params: {...params, UserId: client.user},
       })
-      .then((res) => resolve(res.data))
-      .catch((error: AxiosError) => reject(error))
+      .then(
+        (res) => resolve(res.data),
+        (error: AxiosError) => reject(error),
+      )
   })
 }

@@ -8,7 +8,9 @@ export const playlists = (client: Client, itemID: string, params?: ItemsQuery) =
     client.client.get<ItemsList>('/Playlists/' + itemID + '/Items', {
         params: {...params, UserId: client.user},
       })
-      .then((res) => resolve(res.data))
-      .catch((error: AxiosError) => reject(error))
+      .then(
+        (res) => resolve(res.data),
+        (error: AxiosError) => reject(error),
+      )
   })
 }

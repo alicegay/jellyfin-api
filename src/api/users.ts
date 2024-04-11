@@ -37,16 +37,20 @@ export const authenticateByName = (
           headers: { Authorization: auth },
         },
       )
-      .then((res) => resolve(res.data))
-      .catch((error: AxiosError) => reject(error))
+      .then(
+        (res) => resolve(res.data),
+        (error: AxiosError) => reject(error),
+      )
   })
 }
 
 export const views = (client: Client) => {
   return new Promise<ItemsList>((resolve, reject) => {
     client.client.get<ItemsList>('/Users/' + client.user + '/Views')
-      .then((res) => resolve(res.data))
-      .catch((error: AxiosError) => reject(error))
+      .then(
+        (res) => resolve(res.data),
+        (error: AxiosError) => reject(error),
+      )
   })
 }
 
@@ -55,8 +59,10 @@ export const items = (client: Client, params?: ItemsQuery) => {
     client.client.get<ItemsList>('/Users/' + client.user + '/Items', {
         params: params,
       })
-      .then((res) => resolve(res.data))
-      .catch((error: AxiosError) => reject(error))
+      .then(
+        (res) => resolve(res.data),
+        (error: AxiosError) => reject(error),
+      )
   })
 }
 
@@ -65,16 +71,20 @@ export const itemsResume = (client: Client, params?: ItemsQuery) => {
     client.client.get<ItemsList>('/Users/' + client.user + '/Items/Resume', {
         params: params,
       })
-      .then((res) => resolve(res.data))
-      .catch((error: AxiosError) => reject(error))
+      .then(
+        (res) => resolve(res.data),
+        (error: AxiosError) => reject(error),
+      )
   })
 }
 
 export const singleItem = (client: Client, itemID: string) => {
   return new Promise<Item>((resolve, reject) => {
     client.client.get<Item>('/Users/' + client.user + '/Items/' + itemID)
-      .then((res) => resolve(res.data))
-      .catch((error: AxiosError) => reject(error))
+      .then(
+        (res) => resolve(res.data),
+        (error: AxiosError) => reject(error),
+      )
   })
 }
 
@@ -83,7 +93,9 @@ export const specialFeatures = (client: Client, itemID: string, params?: ItemsQu
     client.client.get<Item[]>('/Users/' + client.user + '/Items/' + itemID + '/SpecialFeatures', {
         params: params,
       })
-      .then((res) => resolve(res.data))
-      .catch((error: AxiosError) => reject(error))
+      .then(
+        (res) => resolve(res.data),
+        (error: AxiosError) => reject(error),
+      )
   })
 }
