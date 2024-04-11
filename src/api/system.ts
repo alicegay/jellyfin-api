@@ -12,10 +12,10 @@ export const info = (client: Client) => {
 }
 
 export const infoPublic = (server: string) => {
-  return new Promise<InfoPublic>((resolve, reject) => {
+  return new Promise<InfoPublic>((resolve) => {
     axios
       .get<InfoPublic>('/System/Info/Public', { baseURL: server })
       .then((res) => resolve(res.data))
-      .catch((error: AxiosError) => reject(error))
+      .catch((error: AxiosError) => {throw error})
   })
 }
