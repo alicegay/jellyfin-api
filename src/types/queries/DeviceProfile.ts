@@ -61,20 +61,20 @@ export type DirectPlayProfile = {
   Container?: string
   AudioCodec?: string
   VideoCodec?: string
-  Type?: string
+  Type?: 'Audio' | 'Photo' | 'Subtitle' | 'Video'
 }
 
 export type TranscodingProfile = {
   Container?: string
-  Type?: string
+  Type?: 'Audio' | 'Photo' | 'Subtitle' | 'Video'
   VideoCodec?: string
   AudioCodec?: string
   Protocol?: string
   EstimateContentLength?: boolean
   EnableMpegtsM2TsMode?: boolean
-  TranscodeSeekInfo?: string
+  TranscodeSeekInfo?: 'Auto' | 'Bytes'
   CopyTimestamps?: boolean
-  Context?: string
+  Context?: 'Static' | 'Streaming'
   EnableSubtitlesInManifest?: boolean
   MaxAudioChannels?: string
   MinSegments?: number
@@ -84,13 +84,13 @@ export type TranscodingProfile = {
 }
 
 export type ContainerProfile = {
-  Type?: string
+  Type?: 'Audio' | 'Photo' | 'Subtitle' | 'Video'
   Conditions?: Condition[]
   Container?: string
 }
 
 export type CodecProfile = {
-  Type?: string
+  Type?: 'Audio' | 'Video' | 'VideoAudio'
   Conditions?: Condition[]
   ApplyConditions?: Condition[]
   Codec?: string
@@ -101,7 +101,7 @@ export type ResponseProfile = {
   Container?: string
   AudioCodec?: string
   VideoCodec?: string
-  Type?: string
+  Type?: 'Audio' | 'Photo' | 'Subtitle' | 'Video'
   OrgPn?: string
   MimeType?: string
   Conditions: Condition[]
@@ -109,15 +109,44 @@ export type ResponseProfile = {
 
 export type SubtitleProfile = {
   Format?: string
-  Method?: 'Embed' | 'External' | 'Encode'
+  Method?: 'Drop' | 'Embed' | 'Encode' | 'External' | 'Hls'
   DidlMode?: string
   Language?: string
   Container?: string
 }
 
 export type Condition = {
-  Condition?: string
-  Property?: string
+  Condition?:
+    | 'Equals'
+    | 'EqualsAny'
+    | 'GreaterThanEqual'
+    | 'LessThanEqual'
+    | 'NotEquals'
+  Property?:
+    | 'AudioBitDepth'
+    | 'AudioBitrate'
+    | 'AudioChannels'
+    | 'AudioProfile'
+    | 'AudioSampleRate'
+    | 'Has64BitOffsets'
+    | 'Height'
+    | 'IsAnamorphic'
+    | 'IsAvc'
+    | 'IsInterlaced'
+    | 'IsSecondaryAudio'
+    | 'NumAudioStreams'
+    | 'NumVideoStreams'
+    | 'PacketLength'
+    | 'RefFrames'
+    | 'VideoBitDepth'
+    | 'VideoBitrate'
+    | 'VideoCodecTag'
+    | 'VideoFramerate'
+    | 'VideoLevel'
+    | 'VideoProfile'
+    | 'VideoRangeType'
+    | 'VideoTimestamp'
+    | 'Width'
   Value?: string
   IsRequired?: boolean
 }
