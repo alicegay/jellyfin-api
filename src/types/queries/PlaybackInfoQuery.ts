@@ -9,7 +9,7 @@ type PlaybackInfoQuery = {
   MaxAudioChannels?: number
   MediaSourceId?: string
   LiveStreamId?: string
-  DeviceProfile?: DeviceProfile[]
+  DeviceProfile?: DeviceProfile
   EnableDirectPlay?: boolean
   EnableDirectStream?: boolean
   EnableTranscoding?: boolean
