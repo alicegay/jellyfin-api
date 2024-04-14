@@ -9,9 +9,9 @@ type ProgressQuery = {
   EventName?: 'timeupdate' | 'pause' | 'unpause'
   IsPaused: boolean
   IsMuted: boolean
-  PositionTicks?: boolean
-  PlaybackStartTimeTicks?: boolean
-  VolumeLevel?: boolean
+  PositionTicks?: number
+  PlaybackStartTimeTicks?: number
+  VolumeLevel?: number
   Brightness?: number
   AspectRatio?: string
   PlayMethod: 'DirectPlay' | 'DirectStream' | 'Transcode'
