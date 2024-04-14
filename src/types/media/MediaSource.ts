@@ -1,12 +1,12 @@
 import MediaStream from './MediaStream'
 
 type MediaSource = {
-  Protocol: 'File'
+  Protocol: string
   Id: string
   Path: string
   EncoderPath: string
-  EncoderProtocol: 'File'
-  Type: 'Default'
+  EncoderProtocol: string
+  Type: string
   Container: string
   Size: number
   Name: string
@@ -30,19 +30,17 @@ type MediaSource = {
   SupportsProbing: true
   VideoType: string
   IsoType: string
-  Video3DFormat: 'HalfSideBySide'
+  Video3DFormat: string
   MediaStreams: MediaStream[]
-  MediaAttachments: [
-    {
-      Codec: string
-      CodecTag: string
-      Comment: string
-      Index: number
-      FileName: string
-      MimeType: string
-      DeliveryUrl: string
-    },
-  ]
+  MediaAttachments: {
+    Codec: string
+    CodecTag: string
+    Comment: string
+    Index: number
+    FileName: string
+    MimeType: string
+    DeliveryUrl: string
+  }[]
   Formats: string[]
   Bitrate: number
   Timestamp: string

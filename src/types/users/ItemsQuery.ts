@@ -13,6 +13,9 @@ type ItemsQuery = {
   IsFavorite?: boolean
   Season?: number
   SeasonId?: string
+  StartTimeTicks?: number
+  AudioStreamIndex?: number
+  SubtitleStreamIndex?: number
 }
 
 export default ItemsQuery
