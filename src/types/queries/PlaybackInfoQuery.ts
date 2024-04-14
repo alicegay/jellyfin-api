@@ -1,3 +1,5 @@
+import DeviceProfile from './DeviceProfile'
+
 type PlaybackInfoQuery = {
   UserId?: string
   MaxStreamingBitrate?: number
@@ -7,7 +9,7 @@ type PlaybackInfoQuery = {
   MaxAudioChannels?: number
   MediaSourceId?: string
   LiveStreamId?: string
-  DeviceProfile?: {}
+  DeviceProfile?: DeviceProfile[]
   EnableDirectPlay?: boolean
   EnableDirectStream?: boolean
   EnableTranscoding?: boolean
