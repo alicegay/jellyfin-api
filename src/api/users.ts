@@ -2,7 +2,7 @@ import axios, { AxiosError } from 'axios'
 import Client from '../types/Client'
 import Authentication from '../types/users/Authentication'
 import ItemsList from '../types/media/ItemsList'
-import ItemsQuery from '../types/users/ItemsQuery'
+import ItemsQuery from '../types/queries/ItemsQuery'
 import Item from '../types/media/Item'
 
 export const authenticateByName = (
@@ -46,17 +46,17 @@ export const authenticateByName = (
 
 export const views = (client: Client) => {
   return new Promise<ItemsList>((resolve, reject) => {
-    client.client.get<ItemsList>('/Users/' + client.user + '/Views')
-      .then(
-        (res) => resolve(res.data),
-        (error: AxiosError) => reject(error),
-      )
+    client.client.get<ItemsList>('/Users/' + client.user + '/Views').then(
+      (res) => resolve(res.data),
+      (error: AxiosError) => reject(error),
+    )
   })
 }
 
 export const items = (client: Client, params?: ItemsQuery) => {
   return new Promise<ItemsList>((resolve, reject) => {
-    client.client.get<ItemsList>('/Users/' + client.user + '/Items', {
+    client.client
+      .get<ItemsList>('/Users/' + client.user + '/Items', {
         params: params,
       })
       .then(
@@ -68,7 +68,8 @@ export const items = (client: Client, params?: ItemsQuery) => {
 
 export const itemsResume = (client: Client, params?: ItemsQuery) => {
   return new Promise<ItemsList>((resolve, reject) => {
-    client.client.get<ItemsList>('/Users/' + client.user + '/Items/Resume', {
+    client.client
+      .get<ItemsList>('/Users/' + client.user + '/Items/Resume', {
         params: params,
       })
       .then(
@@ -80,19 +81,26 @@ export const itemsResume = (client: Client, params?: ItemsQuery) => {
 
 export const singleItem = (client: Client, itemID: string) => {
   return new Promise<Item>((resolve, reject) => {
-    client.client.get<Item>('/Users/' + client.user + '/Items/' + itemID)
-      .then(
-        (res) => resolve(res.data),
-        (error: AxiosError) => reject(error),
-      )
+    client.client.get<Item>('/Users/' + client.user + '/Items/' + itemID).then(
+      (res) => resolve(res.data),
+      (error: AxiosError) => reject(error),
+    )
   })
 }
 
-export const specialFeatures = (client: Client, itemID: string, params?: ItemsQuery) => {
+export const specialFeatures = (
+  client: Client,
+  itemID: string,
+  params?: ItemsQuery,
+) => {
   return new Promise<Item[]>((resolve, reject) => {
-    client.client.get<Item[]>('/Users/' + client.user + '/Items/' + itemID + '/SpecialFeatures', {
-        params: params,
-      })
+    client.client
+      .get<Item[]>(
+        '/Users/' + client.user + '/Items/' + itemID + '/SpecialFeatures',
+        {
+          params: params,
+        },
+      )
       .then(
         (res) => resolve(res.data),
         (error: AxiosError) => reject(error),
