@@ -1,5 +1,5 @@
 type ItemsQuery = {
-  ParentId?: string,
+  ParentId?: string
   SortBy?: string
   SortOrder?: 'Ascending' | 'Descending'
   IncludeItemTypes?: string
@@ -16,6 +16,7 @@ type ItemsQuery = {
   StartTimeTicks?: number
   AudioStreamIndex?: number
   SubtitleStreamIndex?: number
+  deviceId?: string
 }
 
 export default ItemsQuery

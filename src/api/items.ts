@@ -16,7 +16,7 @@ export const playbackInfo = (
         '/Items/' + itemID + '/PlaybackInfo',
         { ...payload, UserId: client.user },
         {
-          params,
+          params: params,
         },
       )
       .then(
