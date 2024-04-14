@@ -1,11 +1,10 @@
 import { AxiosError } from 'axios'
 import Client from '../types/Client'
-import ItemsList from '../types/media/ItemsList'
 import ItemsQuery from '../types/queries/ItemsQuery'
 import PlaybackInfo from '../types/media/PlaybackInfo'
 import PlaybackInfoQuery from '../types/queries/PlaybackInfoQuery'
 
-export const items = (
+export const playbackInfo = (
   client: Client,
   itemID: string,
   payload: PlaybackInfoQuery,
