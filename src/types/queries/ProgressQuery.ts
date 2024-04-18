@@ -30,7 +30,7 @@ export type ProgressStoppedQuery = {
   ItemId: string
   SessionId?: string
   MediaSourceId?: string
-  PositionTicks?: string
+  PositionTicks?: number
   LiveStreamId?: string
   PlaySessionId?: string
   Failed: boolean
