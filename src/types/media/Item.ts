@@ -1,5 +1,6 @@
 import UserData from '../users/UserData'
 import MediaStream from './MediaStream'
+import MediaSource from './MediaSource'
 
 type Item = {
   Name: string
