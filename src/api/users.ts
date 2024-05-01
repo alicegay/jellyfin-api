@@ -4,6 +4,7 @@ import Authentication from '../types/users/Authentication'
 import ItemsList from '../types/media/ItemsList'
 import ItemsQuery from '../types/queries/ItemsQuery'
 import Item from '../types/media/Item'
+import UserData from '../types/users/UserData'
 
 export const authenticateByName = (
   server: string,
@@ -101,6 +102,28 @@ export const specialFeatures = (
           params: params,
         },
       )
+      .then(
+        (res) => resolve(res.data),
+        (error: AxiosError) => reject(error),
+      )
+  })
+}
+
+export const playedItems = (client: Client, itemID: string) => {
+  return new Promise<UserData>((resolve, reject) => {
+    client.client
+      .post<UserData>('/Users/' + client.user + '/PlayedItems/' + itemID)
+      .then(
+        (res) => resolve(res.data),
+        (error: AxiosError) => reject(error),
+      )
+  })
+}
+
+export const playedItemsDel = (client: Client, itemID: string) => {
+  return new Promise<UserData>((resolve, reject) => {
+    client.client
+      .delete<UserData>('/Users/' + client.user + '/PlayedItems/' + itemID)
       .then(
         (res) => resolve(res.data),
         (error: AxiosError) => reject(error),
