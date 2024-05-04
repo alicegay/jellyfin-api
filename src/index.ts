@@ -5,6 +5,17 @@ import * as sessions from './api/sessions'
 import * as shows from './api/shows'
 import * as system from './api/system'
 import * as users from './api/users'
+import * as other from './api/other'
 import type Client from './types/Client'
 
-export { artists, items, playlists, sessions, shows, system, users, Client }
+export {
+  artists,
+  items,
+  playlists,
+  sessions,
+  shows,
+  system,
+  users,
+  other,
+  Client,
+}
