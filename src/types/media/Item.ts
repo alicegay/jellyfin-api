@@ -101,6 +101,13 @@ type Item = {
     | 'movies'
     | 'musicvideos'
     | 'livetv'
+    | 'books'
+    | 'boxsets'
+    | 'folders'
+    | 'homevideos'
+    | 'photos'
+    | 'trailers'
+    | 'unknown'
   DisplayOrder: string
   AlbumId: string
   AlbumPrimaryImageTag: string
