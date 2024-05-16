@@ -1,8 +1,22 @@
 import { AxiosError } from 'axios'
 import Client from '../types/Client'
 import ItemsQuery from '../types/queries/ItemsQuery'
+import Item from '../types/media/Item'
 import PlaybackInfo from '../types/media/PlaybackInfo'
 import PlaybackInfoQuery from '../types/queries/PlaybackInfoQuery'
+
+export const items = (client: Client, itemID: string, params?: ItemsQuery) => {
+  return new Promise<Item>((resolve, reject) => {
+    client.client
+      .get<Item>('/Items/' + itemID, {
+        params: { ...params, UserId: client.user },
+      })
+      .then(
+        (res) => resolve(res.data),
+        (error: AxiosError) => reject(error),
+      )
+  })
+}
 
 export const playbackInfo = (
   client: Client,
