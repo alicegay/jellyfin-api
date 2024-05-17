@@ -7,4 +7,9 @@ type IntroTimestamps = {
   HideSkipPromptAt: number
 }
 
+export type IntroSegments = {
+  Introduction: IntroSegments
+  Credits: IntroSegments
+}
+
 export default IntroTimestamps
