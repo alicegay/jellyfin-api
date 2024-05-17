@@ -8,8 +8,8 @@ type IntroTimestamps = {
 }
 
 export type IntroSegments = {
-  Introduction: IntroSegments
-  Credits: IntroSegments
+  Introduction: IntroTimestamps
+  Credits: IntroTimestamps
 }
 
 export default IntroTimestamps
