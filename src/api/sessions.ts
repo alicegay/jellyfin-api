@@ -48,3 +48,27 @@ export const playingStopped = (
     )
   })
 }
+
+export const playState = (
+  client: Client,
+  sessionID: string,
+  command:
+    | 'Stop'
+    | 'Pause'
+    | 'Unpause'
+    | 'NextTrack'
+    | 'PreviousTrack'
+    | 'Seek'
+    | 'Rewind'
+    | 'FastForward'
+    | 'PlayPause',
+) => {
+  return new Promise<void>((resolve, reject) => {
+    client.client
+      .post<void>('/Sessions/' + sessionID + '/Playing/' + command)
+      .then(
+        (res) => resolve(),
+        (error: AxiosError) => reject(error),
+      )
+  })
+}
