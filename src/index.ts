@@ -1,4 +1,5 @@
 import * as artists from './api/artists'
+import * as audio from './api/audio'
 import * as items from './api/items'
 import * as playlists from './api/playlists'
 import * as sessions from './api/sessions'
@@ -10,6 +11,7 @@ import type Client from './types/Client'
 
 export {
   artists,
+  audio,
   items,
   playlists,
   sessions,
