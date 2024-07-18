@@ -6,6 +6,7 @@ type ItemsQuery = {
   ExcludeItemTypes?: string
   Recursive?: boolean
   Fields?: string
+  Filter?: string
   ImageTypeLimit?: number
   EnableImageTypes?: string
   StartIndex?: number
