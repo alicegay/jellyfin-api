@@ -130,3 +130,21 @@ export const playedItemsDel = (client: Client, itemID: string) => {
       )
   })
 }
+
+export const favoriteItems = (client: Client, itemID: string) => {
+  return new Promise<UserData>((resolve, reject) => {
+    client.client.post<UserData>('/UserFavoriteItems/' + itemID).then(
+      (res) => resolve(res.data),
+      (error: AxiosError) => reject(error),
+    )
+  })
+}
+
+export const favoriteItemsDel = (client: Client, itemID: string) => {
+  return new Promise<UserData>((resolve, reject) => {
+    client.client.delete<UserData>('/UserFavoriteItems/' + itemID).then(
+      (res) => resolve(res.data),
+      (error: AxiosError) => reject(error),
+    )
+  })
+}
