@@ -216,7 +216,7 @@ type Item = {
   IsPremiere: true
   TimerId: string
   CurrentProgram: {}
-  NormalizationGain: string
+  NormalizationGain: number
 }
 
 export default Item
