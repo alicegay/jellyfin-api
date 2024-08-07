@@ -39,3 +39,20 @@ export const playbackInfo = (
       )
   })
 }
+
+export const latest = (
+  client: Client,
+  parentID: string,
+  params?: ItemsQuery,
+) => {
+  return new Promise<Item[]>((resolve, reject) => {
+    client.client
+      .get<Item[]>('/Items/Latest', {
+        params: { ...params, UserId: client.user, ParentId: parentID },
+      })
+      .then(
+        (res) => resolve(res.data),
+        (error: AxiosError) => reject(error),
+      )
+  })
+}
