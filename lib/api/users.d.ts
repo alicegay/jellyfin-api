@@ -1,0 +1,16 @@
+import Client from '../types/Client';
+import Authentication from '../types/users/Authentication';
+import ItemsList from '../types/media/ItemsList';
+import ItemsQuery from '../types/queries/ItemsQuery';
+import Item from '../types/media/Item';
+import UserData from '../types/users/UserData';
+export declare const authenticateByName: (server: string, username: string, password: string, clientName: string, deviceName: string, deviceID: string, version: string) => Promise<Authentication>;
+export declare const views: (client: Client) => Promise<ItemsList>;
+export declare const items: (client: Client, params?: ItemsQuery) => Promise<ItemsList>;
+export declare const itemsResume: (client: Client, params?: ItemsQuery) => Promise<ItemsList>;
+export declare const singleItem: (client: Client, itemID: string) => Promise<Item>;
+export declare const specialFeatures: (client: Client, itemID: string, params?: ItemsQuery) => Promise<Item[]>;
+export declare const playedItems: (client: Client, itemID: string) => Promise<UserData>;
+export declare const playedItemsDel: (client: Client, itemID: string) => Promise<UserData>;
+export declare const favoriteItems: (client: Client, itemID: string) => Promise<UserData>;
+export declare const favoriteItemsDel: (client: Client, itemID: string) => Promise<UserData>;
