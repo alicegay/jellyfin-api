@@ -36,10 +36,11 @@ export const add = (client: Client, playlistID: string, itemIDs: string[]) => {
   return new Promise((resolve, reject) => {
     client.client
       .post('/Playlists/' + playlistID + '/Items', {
-        params: { ids: itemIDs.join(','), userId: client.user },
+        ids: itemIDs.join(','),
+        userId: client.user,
       })
       .then(
-        (res) => resolve(res.data),
+        (res) => resolve(res),
         (error: AxiosError) => reject(error),
       )
   })
@@ -56,7 +57,7 @@ export const remove = (
         params: { entryIds: itemIDs.join(',') },
       })
       .then(
-        (res) => resolve(res.data),
+        (res) => resolve(res),
         (error: AxiosError) => reject(error),
       )
   })
@@ -79,7 +80,7 @@ export const create = (
         },
       })
       .then(
-        (res) => resolve(res.data),
+        (res) => resolve(res),
         (error: AxiosError) => reject(error),
       )
   })
