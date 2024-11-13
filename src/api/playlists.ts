@@ -35,9 +35,8 @@ export const user = (client: Client, playlistID: string) => {
 export const add = (client: Client, playlistID: string, itemIDs: string[]) => {
   return new Promise((resolve, reject) => {
     client.client
-      .post('/Playlists/' + playlistID + '/Items', {
-        ids: itemIDs.join(','),
-        userId: client.user,
+      .post('/Playlists/' + playlistID + '/Items', null, {
+        params: { ids: itemIDs.join(','), userId: client.user },
       })
       .then(
         (res) => resolve(res),
