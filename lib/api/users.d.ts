@@ -10,6 +10,7 @@ export declare const items: (client: Client, params?: ItemsQuery) => Promise<Ite
 export declare const itemsResume: (client: Client, params?: ItemsQuery) => Promise<ItemsList>;
 export declare const singleItem: (client: Client, itemID: string) => Promise<Item>;
 export declare const specialFeatures: (client: Client, itemID: string, params?: ItemsQuery) => Promise<Item[]>;
+export declare const localTrailers: (client: Client, itemID: string, params?: ItemsQuery) => Promise<Item[]>;
 export declare const playedItems: (client: Client, itemID: string) => Promise<UserData>;
 export declare const playedItemsDel: (client: Client, itemID: string) => Promise<UserData>;
 export declare const favoriteItems: (client: Client, itemID: string) => Promise<UserData>;

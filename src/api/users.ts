@@ -109,6 +109,26 @@ export const specialFeatures = (
   })
 }
 
+export const localTrailers = (
+  client: Client,
+  itemID: string,
+  params?: ItemsQuery,
+) => {
+  return new Promise<Item[]>((resolve, reject) => {
+    client.client
+      .get<Item[]>(
+        '/Users/' + client.user + '/Items/' + itemID + '/LocalTrailers',
+        {
+          params: params,
+        },
+      )
+      .then(
+        (res) => resolve(res.data),
+        (error: AxiosError) => reject(error),
+      )
+  })
+}
+
 export const playedItems = (client: Client, itemID: string) => {
   return new Promise<UserData>((resolve, reject) => {
     client.client
