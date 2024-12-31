@@ -3,7 +3,10 @@ import Client from '../types/Client'
 import ItemsList from '../types/media/ItemsList'
 import ItemsQuery from '../types/queries/ItemsQuery'
 
-export const artists = (client: Client, params?: ItemsQuery) => {
+export const artists = (
+  client: Client,
+  params?: ItemsQuery,
+): Promise<ItemsList> => {
   return new Promise<ItemsList>((resolve, reject) => {
     client.client
       .get<ItemsList>('/Artists', {
@@ -16,7 +19,10 @@ export const artists = (client: Client, params?: ItemsQuery) => {
   })
 }
 
-export const albumArtists = (client: Client, params?: ItemsQuery) => {
+export const albumArtists = (
+  client: Client,
+  params?: ItemsQuery,
+): Promise<ItemsList> => {
   return new Promise<ItemsList>((resolve, reject) => {
     client.client
       .get<ItemsList>('/Artists/AlbumArtists', {

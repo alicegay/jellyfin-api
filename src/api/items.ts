@@ -5,7 +5,11 @@ import Item from '../types/media/Item'
 import PlaybackInfo from '../types/media/PlaybackInfo'
 import PlaybackInfoQuery from '../types/queries/PlaybackInfoQuery'
 
-export const items = (client: Client, itemID: string, params?: ItemsQuery) => {
+export const items = (
+  client: Client,
+  itemID: string,
+  params?: ItemsQuery,
+): Promise<Item> => {
   return new Promise<Item>((resolve, reject) => {
     client.client
       .get<Item>('/Items/' + itemID, {
@@ -23,7 +27,7 @@ export const playbackInfo = (
   itemID: string,
   payload: PlaybackInfoQuery,
   params?: ItemsQuery,
-) => {
+): Promise<PlaybackInfo> => {
   return new Promise<PlaybackInfo>((resolve, reject) => {
     client.client
       .post<PlaybackInfo>(
@@ -44,7 +48,7 @@ export const latest = (
   client: Client,
   parentID: string,
   params?: ItemsQuery,
-) => {
+): Promise<Item[]> => {
   return new Promise<Item[]>((resolve, reject) => {
     client.client
       .get<Item[]>('/Items/Latest', {

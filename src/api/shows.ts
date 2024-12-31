@@ -7,7 +7,7 @@ export const episodes = (
   client: Client,
   itemID: string,
   params?: ItemsQuery,
-) => {
+): Promise<ItemsList> => {
   return new Promise<ItemsList>((resolve, reject) => {
     client.client
       .get<ItemsList>('/Shows/' + itemID + '/Episodes', {
@@ -24,7 +24,7 @@ export const seasons = (
   client: Client,
   itemID: string,
   params?: ItemsQuery,
-) => {
+): Promise<ItemsList> => {
   return new Promise<ItemsList>((resolve, reject) => {
     client.client
       .get<ItemsList>('/Shows/' + itemID + '/Seasons', {
@@ -37,7 +37,10 @@ export const seasons = (
   })
 }
 
-export const nextup = (client: Client, params?: ItemsQuery) => {
+export const nextup = (
+  client: Client,
+  params?: ItemsQuery,
+): Promise<ItemsList> => {
   return new Promise<ItemsList>((resolve, reject) => {
     client.client
       .get<ItemsList>('/Shows/Nextup', {
@@ -50,7 +53,10 @@ export const nextup = (client: Client, params?: ItemsQuery) => {
   })
 }
 
-export const upcoming = (client: Client, params?: ItemsQuery) => {
+export const upcoming = (
+  client: Client,
+  params?: ItemsQuery,
+): Promise<ItemsList> => {
   return new Promise<ItemsList>((resolve, reject) => {
     client.client
       .get<ItemsList>('/Shows/Upcoming', {

@@ -14,7 +14,7 @@ export const authenticateByName = (
   deviceName: string,
   deviceID: string,
   version: string,
-) => {
+): Promise<Authentication> => {
   const auth =
     'MediaBrowser Client="' +
     clientName +
@@ -45,7 +45,7 @@ export const authenticateByName = (
   })
 }
 
-export const views = (client: Client) => {
+export const views = (client: Client): Promise<ItemsList> => {
   return new Promise<ItemsList>((resolve, reject) => {
     client.client.get<ItemsList>('/Users/' + client.user + '/Views').then(
       (res) => resolve(res.data),
@@ -54,7 +54,10 @@ export const views = (client: Client) => {
   })
 }
 
-export const items = (client: Client, params?: ItemsQuery) => {
+export const items = (
+  client: Client,
+  params?: ItemsQuery,
+): Promise<ItemsList> => {
   return new Promise<ItemsList>((resolve, reject) => {
     client.client
       .get<ItemsList>('/Users/' + client.user + '/Items', {
@@ -67,7 +70,10 @@ export const items = (client: Client, params?: ItemsQuery) => {
   })
 }
 
-export const itemsResume = (client: Client, params?: ItemsQuery) => {
+export const itemsResume = (
+  client: Client,
+  params?: ItemsQuery,
+): Promise<ItemsList> => {
   return new Promise<ItemsList>((resolve, reject) => {
     client.client
       .get<ItemsList>('/Users/' + client.user + '/Items/Resume', {
@@ -80,7 +86,7 @@ export const itemsResume = (client: Client, params?: ItemsQuery) => {
   })
 }
 
-export const singleItem = (client: Client, itemID: string) => {
+export const singleItem = (client: Client, itemID: string): Promise<Item> => {
   return new Promise<Item>((resolve, reject) => {
     client.client.get<Item>('/Users/' + client.user + '/Items/' + itemID).then(
       (res) => resolve(res.data),
@@ -93,7 +99,7 @@ export const specialFeatures = (
   client: Client,
   itemID: string,
   params?: ItemsQuery,
-) => {
+): Promise<Item[]> => {
   return new Promise<Item[]>((resolve, reject) => {
     client.client
       .get<Item[]>(
@@ -113,7 +119,7 @@ export const localTrailers = (
   client: Client,
   itemID: string,
   params?: ItemsQuery,
-) => {
+): Promise<Item[]> => {
   return new Promise<Item[]>((resolve, reject) => {
     client.client
       .get<Item[]>(
@@ -129,7 +135,10 @@ export const localTrailers = (
   })
 }
 
-export const playedItems = (client: Client, itemID: string) => {
+export const playedItems = (
+  client: Client,
+  itemID: string,
+): Promise<UserData> => {
   return new Promise<UserData>((resolve, reject) => {
     client.client
       .post<UserData>('/Users/' + client.user + '/PlayedItems/' + itemID)
@@ -140,7 +149,10 @@ export const playedItems = (client: Client, itemID: string) => {
   })
 }
 
-export const playedItemsDel = (client: Client, itemID: string) => {
+export const playedItemsDel = (
+  client: Client,
+  itemID: string,
+): Promise<UserData> => {
   return new Promise<UserData>((resolve, reject) => {
     client.client
       .delete<UserData>('/Users/' + client.user + '/PlayedItems/' + itemID)
@@ -151,7 +163,10 @@ export const playedItemsDel = (client: Client, itemID: string) => {
   })
 }
 
-export const favoriteItems = (client: Client, itemID: string) => {
+export const favoriteItems = (
+  client: Client,
+  itemID: string,
+): Promise<UserData> => {
   return new Promise<UserData>((resolve, reject) => {
     client.client.post<UserData>('/UserFavoriteItems/' + itemID).then(
       (res) => resolve(res.data),
@@ -160,7 +175,10 @@ export const favoriteItems = (client: Client, itemID: string) => {
   })
 }
 
-export const favoriteItemsDel = (client: Client, itemID: string) => {
+export const favoriteItemsDel = (
+  client: Client,
+  itemID: string,
+): Promise<UserData> => {
   return new Promise<UserData>((resolve, reject) => {
     client.client.delete<UserData>('/UserFavoriteItems/' + itemID).then(
       (res) => resolve(res.data),

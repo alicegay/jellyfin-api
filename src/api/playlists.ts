@@ -8,7 +8,7 @@ export const playlists = (
   client: Client,
   itemID: string,
   params?: ItemsQuery,
-) => {
+): Promise<ItemsList> => {
   return new Promise<ItemsList>((resolve, reject) => {
     client.client
       .get<ItemsList>('/Playlists/' + itemID + '/Items', {
@@ -21,7 +21,10 @@ export const playlists = (
   })
 }
 
-export const user = (client: Client, playlistID: string) => {
+export const user = (
+  client: Client,
+  playlistID: string,
+): Promise<PlaylistUser> => {
   return new Promise<PlaylistUser>((resolve, reject) => {
     client.client
       .get<PlaylistUser>('/Playlists/' + playlistID + '/Users/' + client.user)
@@ -32,14 +35,18 @@ export const user = (client: Client, playlistID: string) => {
   })
 }
 
-export const add = (client: Client, playlistID: string, itemIDs: string[]) => {
-  return new Promise((resolve, reject) => {
+export const add = (
+  client: Client,
+  playlistID: string,
+  itemIDs: string[],
+): Promise<void> => {
+  return new Promise<void>((resolve, reject) => {
     client.client
-      .post('/Playlists/' + playlistID + '/Items', null, {
+      .post<void>('/Playlists/' + playlistID + '/Items', null, {
         params: { ids: itemIDs.join(','), userId: client.user },
       })
       .then(
-        (res) => resolve(res),
+        (res) => resolve(),
         (error: AxiosError) => reject(error),
       )
   })
@@ -49,14 +56,14 @@ export const remove = (
   client: Client,
   playlistID: string,
   itemIDs: string[],
-) => {
-  return new Promise((resolve, reject) => {
+): Promise<void> => {
+  return new Promise<void>((resolve, reject) => {
     client.client
-      .delete('/Playlists/' + playlistID + '/Items', {
+      .delete<void>('/Playlists/' + playlistID + '/Items', {
         params: { entryIds: itemIDs.join(',') },
       })
       .then(
-        (res) => resolve(res),
+        (res) => resolve(),
         (error: AxiosError) => reject(error),
       )
   })
@@ -67,10 +74,10 @@ export const create = (
   name: string,
   itemIDs: string[],
   isPublic: boolean,
-) => {
-  return new Promise((resolve, reject) => {
+): Promise<void> => {
+  return new Promise<void>((resolve, reject) => {
     client.client
-      .post('/Playlists', {
+      .post<void>('/Playlists', {
         params: {
           Name: name,
           Ids: itemIDs.join(','),
@@ -79,7 +86,7 @@ export const create = (
         },
       })
       .then(
-        (res) => resolve(res),
+        (res) => resolve(),
         (error: AxiosError) => reject(error),
       )
   })

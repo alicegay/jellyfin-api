@@ -6,7 +6,10 @@ import ProgressQuery, {
   ProgressStoppedQuery,
 } from '../types/queries/ProgressQuery'
 
-export const sessions = (client: Client, params?: ItemsQuery) => {
+export const sessions = (
+  client: Client,
+  params?: ItemsQuery,
+): Promise<Session[]> => {
   return new Promise<Session[]>((resolve, reject) => {
     client.client
       .get<Session[]>('/Sessions', {
@@ -19,7 +22,10 @@ export const sessions = (client: Client, params?: ItemsQuery) => {
   })
 }
 
-export const playing = (client: Client, payload: ProgressQuery) => {
+export const playing = (
+  client: Client,
+  payload: ProgressQuery,
+): Promise<void> => {
   return new Promise<void>((resolve, reject) => {
     client.client.post<void>('/Sessions/Playing', payload).then(
       (res) => resolve(),
@@ -28,7 +34,10 @@ export const playing = (client: Client, payload: ProgressQuery) => {
   })
 }
 
-export const playingProgress = (client: Client, payload: ProgressQuery) => {
+export const playingProgress = (
+  client: Client,
+  payload: ProgressQuery,
+): Promise<void> => {
   return new Promise<void>((resolve, reject) => {
     client.client.post<void>('/Sessions/Playing/Progress', payload).then(
       (res) => resolve(),
@@ -40,7 +49,7 @@ export const playingProgress = (client: Client, payload: ProgressQuery) => {
 export const playingStopped = (
   client: Client,
   payload: ProgressStoppedQuery,
-) => {
+): Promise<void> => {
   return new Promise<void>((resolve, reject) => {
     client.client.post<void>('/Sessions/Playing/Stopped', payload).then(
       (res) => resolve(),
@@ -62,7 +71,7 @@ export const playState = (
     | 'Rewind'
     | 'FastForward'
     | 'PlayPause',
-) => {
+): Promise<void> => {
   return new Promise<void>((resolve, reject) => {
     client.client
       .post<void>('/Sessions/' + sessionID + '/Playing/' + command)
