@@ -12,4 +12,14 @@ export type IntroSegments = {
   Credits: IntroTimestamps
 }
 
-export default IntroTimestamps
+export type MediaSegments = {
+  Items: {
+    Id: string
+    ItemId: string
+    Type: 'Intro' | 'Outro' | 'Preview' | 'Recap' | 'Commercial'
+    StartTicks: number
+    EndTicks: number
+  }[]
+  TotalRecordCount: number
+  StartIndex: number
+}
