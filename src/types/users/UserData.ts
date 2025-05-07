@@ -4,10 +4,10 @@ type UserData = {
   UnplayedItemCount: number
   PlaybackPositionTicks: number
   PlayCount: number
-  IsFavorite: true
-  Likes: true
+  IsFavorite: boolean
+  Likes: boolean
   LastPlayedDate: string
-  Played: true
+  Played: boolean
   Key: string
   ItemId: string
 }
